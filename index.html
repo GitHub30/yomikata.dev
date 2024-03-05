@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html itemscope itemtype="https://schema.org/WebPage" lang="ja" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="読み方">
+    <title>読み方</title>
+    <style>
+        body {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        main {
+            margin: 16px;
+        }
+
+        header,
+        footer {
+            text-align: center;
+        }
+
+        img {
+            width: 256px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/"><img src="https://i.imgur.com/pyVJ37x.png" alt="logo"></a>
+    </header>
+    <main>
+        <h1>人気ワード</h1>
+        <ul>
+            <li><a href="height.html">height</a> へいと</li>
+            <li><a href="git">git</a> 義っと</li>
+            <li><a href="gif">gif</a> 岐阜</li>
+            <li><a href="width">width</a> ワイズ</li>
+            <li><a href="laravel">laravel</a> ラーベル</li>
+        </ul>
+        <h1>新着ワード</h1>
+        <ul>
+            <li><a href="height.html">height</a> へいと</li>
+            <li><a href="git">git</a> 義っと</li>
+            <li><a href="gif">gif</a> 岐阜</li>
+            <li><a href="width">width</a> ワイズ</li>
+            <li><a href="laravel">laravel</a> ラーベル</li>
+        </ul>
+        <form>
+            <label for="word">　単語:</label>
+            <input id="word" type="text" required>
+            <br>
+            <label for="kana">読み方:</label>
+            <input id="kana" type="text" required>
+            <button>追加</button>
+        </form>
+    </main>
+    <footer>
+        <address><a href="https://github.com/GitHub30/yomikata.dev">yomikata.dev</a></address>
+    </footer>
+    <script>
+        document.forms[0].addEventListener('submit', e => {
+            e.preventDefault()
+            fetch('https://yomikata.deno.dev', {method: 'POST', body: new URLSearchParams({word: word.value, kana: kana.value})})
+            e.target.replaceWith(document.createTextNode('追加いただきありがとうございました。'))
+        })
+    </script>
+</body>
+
+</html>
